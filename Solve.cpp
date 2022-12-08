@@ -120,7 +120,7 @@ int main (){
          printf("nhap sai so tuyet doi :");
          scanf("%f",&e);
          printf("\n \t\tKET QUA CUA CHUONG TRINH:\n");
-         printf("ket qua %f",Newton(x0,B,A,n,e));
+         printf("Nghiem gan dung cua phuong trinh la %f",Newton(x0,B,A,n,e));
          printf("\n\n");
          goto j;
       }
