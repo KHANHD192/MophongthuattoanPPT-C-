@@ -149,11 +149,15 @@ int main (){
       }
       case 4 :{
         float a,b,e;
-         printf("thuc hien nhap khoang phan li [a,b]\n");
+    l:     printf("thuc hien nhap khoang phan li [a,b]\n");
          printf("nhap a :");
          scanf("%f",&a);
          printf("nhap b :");
          scanf("%f",&b);
+          if(Fx(a,A,n)*Fx(b,A,n) > 0){
+                printf("Khoang phan li khong hop le !\n Vui long nhap lai\n");
+                goto l;       
+         }
          printf("nhap sai so tuyet doi :");
          scanf("%f",&e);
          printf("\n \t\tKET QUA CUA CHUONG TRINH:\n");

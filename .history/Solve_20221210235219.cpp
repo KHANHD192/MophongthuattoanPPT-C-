@@ -154,6 +154,9 @@ int main (){
          scanf("%f",&a);
          printf("nhap b :");
          scanf("%f",&b);
+          if(Fx(a,A,n)*Fx(b,A,n) > 0){
+                printf("Khoang phan li khong hop le !\n Vui long nhap lai\n");       
+         }
          printf("nhap sai so tuyet doi :");
          scanf("%f",&e);
          printf("\n \t\tKET QUA CUA CHUONG TRINH:\n");
