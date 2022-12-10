@@ -35,40 +35,22 @@ void import(int n,float a[]){
         
  }
  }
-//  float Fx(float x,float a[],int n){ // x la gia tri de thay vao fx
-//    float sumFx=0.0;
-//       for(int i = n ; i>= 0; i--){
-//          sumFx+= a[i]*(float)pow((float)x,i);
-//       }
-//       return sumFx;
-//       }
-      // tinh gia tri x cua ham fx su dung luoc do hoocne
-      float Fx(float x, float A[],int n) {
-      float KetQua = A[n];
-   for(int i=n-1; i>=0; i--)
-      KetQua=KetQua*x + A[i];
-   return KetQua;
-}
- float Newton(float x0,float B[],float A[],int n,float esilon,int m){ //  m la min tren f(x)'
+ float Fx(float x,float a[],int n){ // x la gia tri de thay vao fx
+   float sumFx=0.0;
+      for(int i = n ; i>= 0; i--){
+         sumFx+= a[i]*(float)pow((float)x,i);
+      }
+      return sumFx;
+      }
+ float Newton(float x0,float B[],float A[],int n,float esilon){
          float xn = x0 - (Fx(x0,A,n)/Fx(x0,B,n-1));
-         if(abs(Fx(xn,A,n)) < esilon*m){ // cong thuc sai so f(x)/m < esilon
+         if(abs(xn - x0) < esilon){
            return xn;
          }else{
            x0 = xn ;
-           return Newton(x0,B,A,n,esilon,m);
+           return Newton(x0,B,A,n,esilon);
          }
  }
- // tim min max dua theo cach dung table trong casio
-  float min(int a, int b , float A[],int n){
-        float min= 0;
-        for(float i = a ; i <= b ; i+=((a-b)/19)){
-                      if(Fx(i,A,n) < min){
-                        min = Fx(i,A,n);
-                      }
-        }
-        return min;
-  }
-
  float binary(float a, float b, float esilon,float A[],int n){
       float e = b - a ;
       float c = (float)(a + b)/2 ;
@@ -124,15 +106,11 @@ int main (){
       case 3 :{
         float a,b,e;
         float x0;
-   k:      printf("thuc hien nhap khoang phan li [a,b]\n");
+         printf("thuc hien nhap khoang phan li [a,b]\n");
          printf("nhap a :");
          scanf("%f",&a);
          printf("nhap b :");
          scanf("%f",&b);
-         if(Fx(a,A,n)*Fx(b,A,n) >0){
-                printf("Khoang phan li khong hop le !\n Vui long nhap lai\n");
-                goto k;       
-         }
          // chon X0
          if((Fx(a,A,n)*Fx(a,C,n-2)) > 0){
                   x0 = a;
@@ -142,22 +120,17 @@ int main (){
          printf("nhap sai so tuyet doi :");
          scanf("%f",&e);
          printf("\n \t\tKET QUA CUA CHUONG TRINH:\n");
-         float m  = min(a,b,B,n); // min cua f(x)''
-         printf("Nghiem gan dung cua phuong trinh la %f",Newton(x0,B,A,n,e,m));
+         printf("Nghiem gan dung cua phuong trinh la %f",Newton(x0,B,A,n,e));
          printf("\n\n");
          goto j;
       }
       case 4 :{
         float a,b,e;
-    k:     printf("thuc hien nhap khoang phan li [a,b]\n");
+         printf("thuc hien nhap khoang phan li [a,b]\n");
          printf("nhap a :");
          scanf("%f",&a);
          printf("nhap b :");
          scanf("%f",&b);
-          if(Fx(a,A,n)*Fx(b,A,n) > 0){
-                printf("Khoang phan li khong hop le !\n Vui long nhap lai\n");
-                goto k;       
-         }
          printf("nhap sai so tuyet doi :");
          scanf("%f",&e);
          printf("\n \t\tKET QUA CUA CHUONG TRINH:\n");
